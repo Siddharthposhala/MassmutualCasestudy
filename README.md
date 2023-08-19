@@ -34,6 +34,7 @@ To set up the LeadAdmin application locally, follow these steps:
    Install Spring Boot CLI or use a Spring Boot-compatible IDE.
 
 3. **MongoDB:**
+
    - Install MongoDB and set up a database instance.
    - Create a database named "MassMutual" in MongoDB.
 
@@ -48,14 +49,9 @@ To run the React frontend, follow these steps:
 
 1. In the project directory, open a terminal window.
 2. Run the following command to install the required packages:
-
-npm install
-
-3. Run the following command to start the development server:
-
-npm start
-
-
+#### `npm install`
+3. Run the following command to start the development server: 
+#### `npm start`
 4. Open your web browser and navigate to [http://localhost:3000](http://localhost:3000) to view the application.
 5. The page will automatically reload when you make changes, and any lint errors will be shown in the console.
 
