@@ -36,7 +36,7 @@ public class LeadService {
         Optional<Lead> leadOptional = leadRepository.findById(assignRequest.getId());
         if (leadOptional.isPresent()) {
             Lead lead = leadOptional.get();
-            lead.setStatus("Completed"); // Update the status
+            lead.setStatus("Pending"); // Update the status
             lead.setAssignedTo(assignRequest.getUsername());
             leadRepository.save(lead);
         }

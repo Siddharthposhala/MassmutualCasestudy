@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 /* eslint-disable no-unused-vars */
 import mass from "./mass.jpg";
-import React, { createContext, useContext, useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./App.css";
 import { useUser } from "./UserContext";
@@ -66,7 +66,7 @@ const Login = () => {
 
   return (
     <div>
-      <section className="h-full bg-neutral-200 dark:bg-neutral-700 ">
+      <section className="h-full bg-neutral-200 dark:bg-neutral-700 lg:mt-20">
         <div className="container h-full p-10 ">
           <div className="g-6 flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200">
             <div className="w-full">
@@ -149,7 +149,7 @@ const Login = () => {
                         </div>
                         <button
                           type="submit"
-                          className="mt-10 bgbutton w-full hover:bg-blue-900 rounded-lg text-white text-sm px-5 py-2.5 text-center"
+                          className="mt-10 bgbutton w-full hover:bg-indigo-900 rounded-lg text-white text-sm px-5 py-2.5 text-center"
                         >
                           Login in
                         </button>
@@ -158,11 +158,11 @@ const Login = () => {
                   </div>
 
                   {/* <!-- Right column container with background and description--> */}
-                  <div className="flex items-center justify-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none bg-blue-800">
+                  <div className="flex items-center justify-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none bg-blue-900">
                     <div className="px-4 py-6 text-white md:mx-6 md:p-12 ">
                       <a
                         href=" "
-                        className="flex flex-col items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white mr-10"
+                        className="flex flex-col items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white mr-10 transition-transform duration-500 transform hover:scale-110"
                       >
                         <img className="w-44 h-10" src={mass} alt="logo" />
                       </a>

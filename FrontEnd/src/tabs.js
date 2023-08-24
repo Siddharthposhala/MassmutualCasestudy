@@ -67,7 +67,7 @@ const TabComponent = () => {
     <div>
       <div className="mb-4 ">
         <ul
-          className="flex flex-wrap -mb-px text-sm font-medium text-center"
+          className="mt-4 flex flex-wrap -mb-px text-sm font-medium text-center"
           id="myTab"
           role="tablist"
         >
