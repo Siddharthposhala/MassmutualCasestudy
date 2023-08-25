@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 /* eslint-disable no-unused-vars */
+import gif from "./admin.gif";
 import mass from "./mass.jpg";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -69,14 +70,32 @@ const Login = () => {
       <section className="h-full bg-neutral-200 dark:bg-neutral-700 lg:mt-20">
         <div className="container h-full p-10 ">
           <div className="g-6 flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200">
-            <div className="w-full">
-              <div className="block rounded-xl bg-white shadow-2xl dark:bg-neutral-800">
+            <div className="w-4/6">
+              <div className="block rounded-2xl bg-white shadow-2xl dark:bg-neutral-800">
                 <div className="g-0 lg:flex lg:flex-wrap">
-                  <div className="px-4 md:px-0 lg:w-6/12">
+                  <div className="flex items-center justify-center lg:w-1/2 lg:rounded-l-2xl lg:rounded-bl-none bg-blue-800 shadow-2xl">
+                    <div className="px-4 py-6 text-white md:mx- md:p-12 sm:mx-4 sm:p-6 ">
+                      <a
+                        href=" "
+                        className="flex flex-col items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white mr-10"
+                      >
+                        <img className="w-33 h-8" src={mass} alt="logo" />
+                      </a>
+
+                      <a
+                        href=" "
+                        className={`${"hidden md:flex md:flex-col md:items-center md:mb-6 md:text-2xl md:font-semibold md:text-gray-900 md:dark:text-white md:mr-10"} ${"hidden sm:flex sm:flex-col sm:items-center sm:mb-6 sm:text-2xl sm:font-semibold sm:text-gray-900 sm:dark:text-white sm:mr-10"} transition-transform duration-500 transform hover:scale-110`}
+                      >
+                        <img className="w-80 h-80" src={gif} alt="logo" />
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="px-4 md:px-0 lg:w-3/6">
                     <div className="md:mx-6 md:p-12">
                       <div className="text-center">
-                        <h4 className="mb-12 mt-1 pb-1 text-xl font-semibold">
-                          Admin Login
+                        <h4 className="mb-12 mt-1 pb-1 text-xl font-bold">
+                          Login in to Admin Dashboard
                         </h4>
                       </div>
 
@@ -128,25 +147,11 @@ const Login = () => {
                         </div>
                         <button
                           type="submit"
-                          className="mt-10 bgbutton w-full hover:bg-indigo-900 rounded-lg text-white text-sm px-5 py-2.5 text-center"
+                          className=" mt-10 bgbutton w-full hover:bg-indigo-900 rounded-lg text-white text-sm px-5 py-2.5 text-center"
                         >
                           Login in
                         </button>
                       </form>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center justify-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none bg-blue-800">
-                    <div className="px-4 py-6 text-white md:mx-6 md:p-12 ">
-                      <a
-                        href=" "
-                        className="flex flex-col items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white mr-10 transition-transform duration-500 transform hover:scale-110"
-                      >
-                        <img className="w-44 h-10" src={mass} alt="logo" />
-                      </a>
-                      <h4 className="mb-6 text-xl font-semibold">
-                        Case Study : Lead-Admin
-                      </h4>
                     </div>
                   </div>
                 </div>

@@ -34,7 +34,7 @@ const Header = () => {
               onClick={handleLogout}
               className="flex items-center text-white dark:text-white cursor-pointer transition-transform duration-500 transform hover:scale-110"
             >
-              <img className="w-9 h-8" src={logout} alt="logo" />
+              <img className="w-8 h-8" src={logout} alt="logo" />
             </button>
           </div>
         ) : (

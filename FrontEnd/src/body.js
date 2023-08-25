@@ -105,7 +105,7 @@ const Dashboard = ({ activeTab, setIsBlurBackground, isBlurBackground }) => {
               {" "}
               <input
                 type="text"
-                className="transition-transform duration-500 transform hover:scale-105 w-5/6 m-4 h-12 rounded-lg outline-none px-3 shadow-md"
+                className="transition-transform duration-500 transform hover:scale-105 w-5/6 m-4 h-12 rounded-lg outline-none px-3 shadow-lg"
                 placeholder="Search..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -197,7 +197,7 @@ const Dashboard = ({ activeTab, setIsBlurBackground, isBlurBackground }) => {
               {" "}
               <input
                 type="text"
-                className="transition-transform duration-500 transform hover:scale-105 w-5/6 m-4 h-12 rounded-lg outline-none px-3 shadow-md"
+                className="transition-transform duration-500 transform hover:scale-105 w-5/6 m-4 h-12 rounded-lg outline-none px-3 shadow-lg"
                 placeholder="Search..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -270,7 +270,7 @@ const Dashboard = ({ activeTab, setIsBlurBackground, isBlurBackground }) => {
               {" "}
               <input
                 type="text"
-                className="transition-transform duration-500 transform hover:scale-105  w-5/6 m-4 h-12 rounded-lg outline-none px-3 shadow-md"
+                className="transition-transform duration-500 transform hover:scale-105  w-5/6 m-4 h-12 rounded-lg outline-none px-3 shadow-lg"
                 placeholder="Search..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
