@@ -9,6 +9,7 @@ const Dashboard = ({ activeTab, setIsBlurBackground, isBlurBackground }) => {
   const [id, setId] = useState(0);
   const [leadname, setLeanname] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
+  const tableBodyHeight = "500px";
 
   useEffect(() => {
     // Fetch leads data from the API
@@ -82,7 +83,7 @@ const Dashboard = ({ activeTab, setIsBlurBackground, isBlurBackground }) => {
   };
 
   const columns = [
-    { Header: "ID", accessor: "id" },
+    // { Header: "ID", accessor: "id" },
     { Header: "First Name", accessor: "firstName" },
     { Header: "Last Name", accessor: "lastName" },
     { Header: "Email", accessor: "email" },
@@ -95,61 +96,68 @@ const Dashboard = ({ activeTab, setIsBlurBackground, isBlurBackground }) => {
     <div id="myTabContent">
       <div
         className={`${
-          isBlurBackground ? "filter blur-lg" : ""
+          isBlurBackground ? " filter blur-lg" : ""
         } transition-all duration-500`}
       >
         <div>
-          <div
-            className={`${
-              activeTab === "newposts" ? "bg-gray-100" : "hidden"
-            } dark:bg-gray-800`}
-            id="newposts"
-            role="tabpanel"
-            aria-labelledby="newposts-tab"
-          >
+          <div className={`${activeTab === "newposts" ? " " : "hidden"} `}>
             <div className="mt-4 relative p-2 ">
               {" "}
               <input
                 type="text"
-                className=" border border-indigo-300 w-full h-12 rounded focus:outline-none px-3 focus:shadow-md"
+                className="transition-transform duration-500 transform hover:scale-105 w-5/6 m-4 h-12 rounded-lg outline-none px-3 shadow-md"
                 placeholder="Search..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />{" "}
               <i className="fa fa-search absolute right-3 top-4 text-gray-300"></i>{" "}
             </div>
-            <div className="overflow-x-auto">
-              <table className=" w-full text-sm text-left text-gray-500 dark:text-gray-400 bg-gray-100 ">
-                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                  <tr>
-                    {columns.map((column) => (
-                      <th key={column.Header} scope="col" className="px-6 py-3">
-                        {column.Header}
-                      </th>
-                    ))}
-                    <th key="Assign" scope="col" className="px-6 py-3">
-                      Agent List
-                    </th>
-                    <th key="delete" scope="col" className="px-6 py-3">
-                      Delete
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className="overflow-y-scroll">
-                  {filterednewPosts.map((lead) => (
-                    <tr
-                      key={lead.id}
-                      className=" bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
-                    >
+
+            <div className="flex flex-col h-screen mt-2 m-6">
+              <div
+                className="flex-grow overflow-auto rounded-lg outline-none shadow-xl"
+                style={{ maxHeight: tableBodyHeight }}
+              >
+                <table className="relative w-full border">
+                  <thead className="uppercase">
+                    <tr>
                       {columns.map((column) => (
-                        <td className="w-4 p-4" key={column.Header}>
-                          <div className="flex items-center">
-                            {lead[column.accessor]}
-                          </div>
-                        </td>
+                        <th
+                          key={column.Header}
+                          scope="col"
+                          className="sticky top-0 px-6 py-3  bg-gray-300"
+                        >
+                          {column.Header}
+                        </th>
                       ))}
-                      <td className="w-4 p-4" key="Assign">
-                        <div className="flex items-center">
+                      <th
+                        key="Assign"
+                        scope="col"
+                        className="sticky top-0 px-6 py-3  bg-gray-300"
+                      >
+                        Agent List
+                      </th>
+                      <th
+                        key="delete"
+                        scope="col"
+                        className="sticky top-0 px-6 py-3  bg-gray-300"
+                      >
+                        Delete
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y">
+                    {filterednewPosts.map((lead) => (
+                      <tr key={lead.id}>
+                        {columns.map((column) => (
+                          <td
+                            key={column.Header}
+                            className="px-6 py-4 text-center"
+                          >
+                            {lead[column.accessor]}
+                          </td>
+                        ))}
+                        <td className="px-6 py-4 text-center" key="Assign">
                           <button
                             onClick={() => {
                               openModal(
@@ -161,22 +169,20 @@ const Dashboard = ({ activeTab, setIsBlurBackground, isBlurBackground }) => {
                           >
                             Show AgentList
                           </button>
-                        </div>
-                      </td>
-                      <td className="w-4 p-4" key="Assign">
-                        <div className="flex items-center">
+                        </td>
+                        <td className="px-6 py-4 text-center " key="delete">
                           <button
                             onClick={() => handleDelete(lead.id)}
                             className="border border-red-300 w-30 hover:shadow-md rounded-lg text-black focus:outline-none text-sm px-3.5 py-1.5 text-center"
                           >
                             Delete
                           </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
@@ -184,67 +190,72 @@ const Dashboard = ({ activeTab, setIsBlurBackground, isBlurBackground }) => {
         <div>
           <div
             className={` ${
-              activeTab === "status" ? "bg-gray-100" : "hidden"
+              activeTab === "status" ? " " : "hidden"
             } dark:bg-gray-800`}
-            id="Assignedposts"
-            role="tabpanel"
-            aria-labelledby="Assignedposts-tab"
           >
             <div className="mt-4 relative p-2 ">
               {" "}
               <input
                 type="text"
-                className=" border border-indigo-300 w-full h-12 rounded focus:outline-none px-3 focus:shadow-md"
+                className="transition-transform duration-500 transform hover:scale-105 w-5/6 m-4 h-12 rounded-lg outline-none px-3 shadow-md"
                 placeholder="Search..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />{" "}
               <i className="fa fa-search absolute right-3 top-4 text-gray-300"></i>{" "}
             </div>
-
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 bg-gray-100 ">
-                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                  <tr>
-                    {columns.map((column) => (
-                      <th key={column.Header} scope="col" className="px-6 py-3">
-                        {column.Header}
-                      </th>
-                    ))}
-
-                    <th key="delete" scope="col" className="px-6 py-3">
-                      Delete
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredleads.map((lead) => (
-                    <tr
-                      key={lead.id}
-                      className=" bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
-                    >
+            <div className="flex flex-col h-screen mt-2 m-6">
+              <div
+                className="flex-grow overflow-auto outline-none shadow-xl rounded-lg"
+                style={{ maxHeight: tableBodyHeight }}
+              >
+                <table className="relative w-full border">
+                  <thead className="uppercase">
+                    <tr>
                       {columns.map((column) => (
-                        <td className="w-4 p-4" key={column.Header}>
-                          <div className="flex items-center">
-                            {lead[column.accessor]}
-                          </div>
-                        </td>
+                        <th
+                          key={column.Header}
+                          scope="col"
+                          className="sticky top-0 px-6 py-3  bg-gray-300"
+                        >
+                          {column.Header}
+                        </th>
                       ))}
 
-                      <td className="w-4 p-4" key="Assign">
-                        <div className="flex items-center">
+                      <th
+                        key="delete"
+                        scope="col"
+                        className="sticky top-0 px-6 py-3  bg-gray-300"
+                      >
+                        Delete
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y">
+                    {filteredleads.map((lead) => (
+                      <tr key={lead.id}>
+                        {columns.map((column) => (
+                          <td
+                            key={column.Header}
+                            className="px-6 py-4 text-center"
+                          >
+                            {lead[column.accessor]}
+                          </td>
+                        ))}
+
+                        <td className="px-6 py-4 text-center " key="delete">
                           <button
                             onClick={() => handleDelete(lead.id)}
                             className="border border-red-300 w-30 hover:shadow-md rounded-lg text-black focus:outline-none text-sm px-3.5 py-1.5 text-center"
                           >
                             Delete
                           </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>
@@ -252,66 +263,72 @@ const Dashboard = ({ activeTab, setIsBlurBackground, isBlurBackground }) => {
         <div>
           <div
             className={` ${
-              activeTab === "Assignedposts" ? "bg-gray-100" : "hidden"
+              activeTab === "Assignedposts" ? " " : "hidden"
             } dark:bg-gray-800`}
-            id="Assignedposts"
-            role="tabpanel"
-            aria-labelledby="Assignedposts-tab"
           >
             <div className="mt-4 relative p-2 ">
               {" "}
               <input
                 type="text"
-                className=" border border-indigo-300 w-full h-12 rounded focus:outline-none px-3 focus:shadow-md"
+                className="transition-transform duration-500 transform hover:scale-105  w-5/6 m-4 h-12 rounded-lg outline-none px-3 shadow-md"
                 placeholder="Search..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />{" "}
               <i className="fa fa-search absolute right-3 top-4 text-gray-300"></i>{" "}
             </div>
-            <div className="overflow-x-auto">
-              <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                  <tr>
-                    {columns.map((column) => (
-                      <th key={column.Header} scope="col" className="px-6 py-3">
-                        {column.Header}
-                      </th>
-                    ))}
-
-                    <th key="delete" scope="col" className="px-6 py-3">
-                      Delete
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredassignedPosts.map((lead) => (
-                    <tr
-                      key={lead.id}
-                      className=" bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
-                    >
+            <div className="flex flex-col h-screen mt-2 m-6">
+              <div
+                className="flex-grow overflow-auto outline-none shadow-xl rounded-lg "
+                style={{ maxHeight: tableBodyHeight }}
+              >
+                <table className="relative w-full border">
+                  <thead className="uppercase">
+                    <tr>
                       {columns.map((column) => (
-                        <td className="w-4 p-4" key={column.Header}>
-                          <div className="flex items-center">
-                            {lead[column.accessor]}
-                          </div>
-                        </td>
+                        <th
+                          key={column.Header}
+                          scope="col"
+                          className="sticky top-0 px-6 py-3  bg-gray-300"
+                        >
+                          {column.Header}
+                        </th>
                       ))}
 
-                      <td className="w-4 p-4" key="Assign">
-                        <div className="flex items-center">
+                      <th
+                        key="delete"
+                        scope="col"
+                        className="sticky top-0 px-6 py-3  bg-gray-300"
+                      >
+                        Delete
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y">
+                    {filteredassignedPosts.map((lead) => (
+                      <tr key={lead.id}>
+                        {columns.map((column) => (
+                          <td
+                            key={column.Header}
+                            className="px-6 py-4 text-center"
+                          >
+                            {lead[column.accessor]}
+                          </td>
+                        ))}
+
+                        <td className="px-6 py-4 text-center " key="delete">
                           <button
                             onClick={() => handleDelete(lead.id)}
                             className="border border-red-300 w-30 hover:shadow-md rounded-lg text-black focus:outline-none text-sm px-3.5 py-1.5 text-center"
                           >
                             Delete
                           </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>

@@ -1,6 +1,4 @@
-import React from "react";
-
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "./App.css";
 
 const AgentModal = ({ isOpen, onClose, id, leadname }) => {
@@ -8,18 +6,17 @@ const AgentModal = ({ isOpen, onClose, id, leadname }) => {
   const [searchQuery, setSearchQuery] = useState("");
 
   useEffect(() => {
-    // Fetch leads data from the API
+    // Fetch agents data from the API
     fetch("http://localhost:8080/restapi/login")
       .then((response) => response.json())
       .then((data) => {
         setLeads(data);
       })
       .catch((error) => {
-        console.error("Error fetching leads:", error);
+        console.error("Error fetching agents:", error);
       });
   }, []);
 
-  // Define table columns and data
   const columns = [
     { Header: "UserName", accessor: "username" },
     { Header: "Role", accessor: "role" },
@@ -55,13 +52,20 @@ const AgentModal = ({ isOpen, onClose, id, leadname }) => {
     agent.username.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
+  const tableBodyHeight = "300px";
+  const height2 = "800px";
+
   return (
-    <div className={`fixed inset-0 ${isOpen ? "block" : "hidden"} z-10`}>
-      <div className="flex items-center justify-center h-screen">
-        <div className="ml-20 flex-wrap bg-white p-6 bg-gray-100  border border-gray-300 rounded-lg shadow-2xl focus:ring focus:ring-blue-300 relative w-2/3 h-2/3 ">
+    <div
+      className={`fixed inset-0 ${
+        isOpen ? "block" : "hidden"
+      } z-10 `}
+    >
+      <div className="flex items-center justify-center h-screen   ">
+        <div className="ml-20 flex-wrap bg-white p-6  border border-gray-300 rounded-lg shadow-2xl focus:ring focus:ring-blue-300 relative w-2/3 h-3/4">
           <button
             className="absolute top-0 right-0 mt-2 mr-2 text-gray-500 bg-Red-500"
-            onClick={onClose} // Close the modal when clicked
+            onClick={onClose}
           >
             <svg
               className="h-5 w-5 fill-current"
@@ -75,7 +79,7 @@ const AgentModal = ({ isOpen, onClose, id, leadname }) => {
               />
             </svg>
           </button>
-          <div className="h-full overflow-hidden">
+          <div className=" overflow-hidden" style={{ maxHeight: height2 }}>
             <h1 className="sm:text-xl lg:text-3xl flex-wrap font-semibold mb-8">
               Agent List{" "}
             </h1>
@@ -84,7 +88,7 @@ const AgentModal = ({ isOpen, onClose, id, leadname }) => {
               {" "}
               <input
                 type="text"
-                className=" border border-indigo-300 w-full h-12 rounded focus:outline-none px-3 focus:shadow-md"
+                className="rounded-lg w-5/6 h-12 rounded outline-none px-4 shadow-lg transition-transform duration-500 transform hover:scale-110"
                 placeholder="Search..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -93,37 +97,46 @@ const AgentModal = ({ isOpen, onClose, id, leadname }) => {
             </div>
             <br></br>
 
-            <div className="h-full overflow-y-scroll">
-              <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 bg-gray-100 ">
-                <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                  <tr>
-                    {columns.map((column) => (
-                      <th key={column.Header} scope="col" className="px-6 py-3">
-                        {column.Header}
-                      </th>
-                    ))}
-                    <th key="Assign" scope="col" className="px-6 py-3">
-                      Assign
-                    </th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {filteredAgents.map((lead) => (
-                    <tr
-                      key={lead.id}
-                      className=" bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600"
-                    >
+            <div className="flex flex-col h-screen mt-2 m-6">
+              <div
+                className="flex-grow overflow-auto rounded-lg outline-none shadow-xl"
+                style={{ maxHeight: tableBodyHeight }}
+              >
+                <table className="relative w-full border">
+                  <thead className="uppercase">
+                    <tr>
                       {columns.map((column) => (
-                        <td className="w-4 p-4" key={column.Header}>
-                          {" "}
-                          <div className="flex items-center">
-                            {lead[column.accessor]}
-                          </div>
-                        </td>
+                        <th
+                          key={column.Header}
+                          scope="col"
+                          className="sticky top-0 px-6 py-4  bg-gray-300"
+                        >
+                          {column.Header}
+                        </th>
                       ))}
-                      <td className="w-4 p-4" key="Assign">
-                        {" "}
-                        <div className="flex items-center">
+
+                      <th
+                        key="delete"
+                        scope="col"
+                        className="sticky top-0 px-6 py-4  bg-gray-300"
+                      >
+                        Assign
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y">
+                    {filteredAgents.map((lead) => (
+                      <tr key={lead.id}>
+                        {columns.map((column) => (
+                          <td
+                            key={column.Header}
+                            className="px-5 py-3 text-center"
+                          >
+                            {lead[column.accessor]}
+                          </td>
+                        ))}
+
+                        <td className="px-5 py-3 text-center " key="Assign">
                           <button
                             onClick={() => {
                               handleAssign(lead.username, id);
@@ -133,12 +146,12 @@ const AgentModal = ({ isOpen, onClose, id, leadname }) => {
                           >
                             Assign Agent
                           </button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
           </div>
         </div>

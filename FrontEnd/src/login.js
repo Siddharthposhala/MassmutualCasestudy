@@ -70,12 +70,10 @@ const Login = () => {
         <div className="container h-full p-10 ">
           <div className="g-6 flex h-full flex-wrap items-center justify-center text-neutral-800 dark:text-neutral-200">
             <div className="w-full">
-              <div className="block rounded-lg bg-white shadow-lg dark:bg-neutral-800">
+              <div className="block rounded-xl bg-white shadow-2xl dark:bg-neutral-800">
                 <div className="g-0 lg:flex lg:flex-wrap">
-                  {/* <!-- Left column container--> */}
                   <div className="px-4 md:px-0 lg:w-6/12">
                     <div className="md:mx-6 md:p-12">
-                      {/* <!--Logo--> */}
                       <div className="text-center">
                         <h4 className="mb-12 mt-1 pb-1 text-xl font-semibold">
                           Admin Login
@@ -88,7 +86,7 @@ const Login = () => {
                             htmlFor="text"
                             className="text-left block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                           >
-                            Your email
+                            Your username
                           </label>
                           <input
                             type="text"
@@ -97,7 +95,7 @@ const Login = () => {
                             value={username}
                             onChange={handleUsernameChange}
                             className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                            placeholder="name@company.com"
+                            placeholder="Username"
                             required=""
                           ></input>
                         </div>
@@ -121,25 +119,6 @@ const Login = () => {
                         </div>
 
                         <div className="flex items-center justify-between">
-                          <div className="flex items-start">
-                            <div className="flex items-center h-5 mt-10">
-                              <input
-                                id="remember"
-                                aria-describedby="remember"
-                                type="checkbox"
-                                className="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                                required=""
-                              ></input>
-                            </div>
-                            <div className="ml-3 text-sm mt-10">
-                              <label
-                                htmlFor="remember"
-                                className="text-gray-500 dark:text-gray-300"
-                              >
-                                Remember me
-                              </label>
-                            </div>
-                          </div>
                           <a
                             href=" "
                             className="mt-10 text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
@@ -157,8 +136,7 @@ const Login = () => {
                     </div>
                   </div>
 
-                  {/* <!-- Right column container with background and description--> */}
-                  <div className="flex items-center justify-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none bg-blue-900">
+                  <div className="flex items-center justify-center rounded-b-lg lg:w-6/12 lg:rounded-r-lg lg:rounded-bl-none bg-blue-800">
                     <div className="px-4 py-6 text-white md:mx-6 md:p-12 ">
                       <a
                         href=" "

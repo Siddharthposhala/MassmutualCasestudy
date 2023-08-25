@@ -3,7 +3,9 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Login from "./login";
 import Admin from "./admin";
 
+
 function App() {
+ 
   return (
     <Router>
       <div className="App">
