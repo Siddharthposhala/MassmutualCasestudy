@@ -56,13 +56,9 @@ const AgentModal = ({ isOpen, onClose, id, leadname }) => {
   const height2 = "800px";
 
   return (
-    <div
-      className={`fixed inset-0 ${
-        isOpen ? "block" : "hidden"
-      } z-10 `}
-    >
+    <div className={`fixed inset-0 ${isOpen ? "block" : "hidden"} z-10 `}>
       <div className="flex items-center justify-center h-screen   ">
-        <div className="ml-20 flex-wrap bg-white p-6  border border-gray-300 rounded-lg shadow-2xl focus:ring focus:ring-blue-300 relative w-2/3 h-3/4">
+        <div className="ml-20 flex-wrap bg-white p-6  border border-gray-300 rounded-lg shadow-2xl focus:ring focus:ring-blue-300 relative w-6/12 h-3/4">
           <button
             className="absolute top-0 right-0 mt-2 mr-2 text-gray-500 bg-Red-500"
             onClick={onClose}
@@ -88,7 +84,7 @@ const AgentModal = ({ isOpen, onClose, id, leadname }) => {
               {" "}
               <input
                 type="text"
-                className="rounded-lg w-5/6 h-12 rounded outline-none px-4 shadow-lg transition-transform duration-500 transform hover:scale-110"
+                className=" border border-gray-200 rounded-lg w-5/6 h-12 rounded outline-none px-4 shadow-lg transition-transform duration-500 transform hover:scale-110"
                 placeholder="Search..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -109,7 +105,7 @@ const AgentModal = ({ isOpen, onClose, id, leadname }) => {
                         <th
                           key={column.Header}
                           scope="col"
-                          className="sticky top-0 px-6 py-4  bg-gray-300"
+                          className="sticky top-0 px-4 py-2  bg-gray-300"
                         >
                           {column.Header}
                         </th>
@@ -118,7 +114,7 @@ const AgentModal = ({ isOpen, onClose, id, leadname }) => {
                       <th
                         key="delete"
                         scope="col"
-                        className="sticky top-0 px-6 py-4  bg-gray-300"
+                        className="sticky top-0 px-4 py-2  bg-gray-300"
                       >
                         Assign
                       </th>
@@ -130,21 +126,21 @@ const AgentModal = ({ isOpen, onClose, id, leadname }) => {
                         {columns.map((column) => (
                           <td
                             key={column.Header}
-                            className="px-5 py-3 text-center"
+                            className="px-4 py-2 text-center"
                           >
                             {lead[column.accessor]}
                           </td>
                         ))}
 
-                        <td className="px-5 py-3 text-center " key="Assign">
+                        <td className="px-4 py-2 text-center " key="Assign">
                           <button
                             onClick={() => {
                               handleAssign(lead.username, id);
                               onClose();
                             }}
-                            className="border border-blue-300 w-30 hover:shadow-md rounded-lg text-black focus:outline-none text-sm px-3.5 py-1.5 text-center"
+                            className=" bg-blue-600 w-30 hover:bg-blue-800 shadow-xl rounded-md text-white font-semibold focus:outline-none text-sm px-3.5 py-2 text-center"
                           >
-                            Assign Agent
+                            Assign
                           </button>
                         </td>
                       </tr>

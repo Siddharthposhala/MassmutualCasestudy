@@ -95,7 +95,7 @@ const Login = () => {
                     <div className="md:mx-6 md:p-12">
                       <div className="text-center">
                         <h4 className="mb-12 mt-1 pb-1 text-xl font-bold">
-                          Login in to Admin Dashboard
+                          Login into Admin Dashboard
                         </h4>
                       </div>
 
@@ -149,7 +149,7 @@ const Login = () => {
                           type="submit"
                           className=" mt-10 bgbutton w-full hover:bg-indigo-900 rounded-lg text-white text-sm px-5 py-2.5 text-center"
                         >
-                          Login in
+                          Login
                         </button>
                       </form>
                     </div>

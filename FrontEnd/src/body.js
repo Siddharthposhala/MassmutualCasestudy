@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import AgentModal from "./AgentModal";
+import bin from "./delete.png";
 
 const Dashboard = ({ activeTab, setIsBlurBackground, isBlurBackground }) => {
   const [leads, setLeads] = useState([]);
@@ -97,7 +98,7 @@ const Dashboard = ({ activeTab, setIsBlurBackground, isBlurBackground }) => {
       <div
         className={`${
           isBlurBackground ? " filter blur-lg" : ""
-        } transition-all duration-500`}
+        } transition-all duration-600`}
       >
         <div>
           <div className={`${activeTab === "newposts" ? " " : "hidden"} `}>
@@ -105,7 +106,7 @@ const Dashboard = ({ activeTab, setIsBlurBackground, isBlurBackground }) => {
               {" "}
               <input
                 type="text"
-                className="transition-transform duration-500 transform hover:scale-105 w-5/6 m-4 h-12 rounded-lg outline-none px-3 shadow-lg"
+                className="transition-transform  border border-gray-200 duration-500 transform hover:scale-105 w-5/6 m-4 h-12 rounded-lg outline-none px-3 shadow-lg"
                 placeholder="Search..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -125,7 +126,7 @@ const Dashboard = ({ activeTab, setIsBlurBackground, isBlurBackground }) => {
                         <th
                           key={column.Header}
                           scope="col"
-                          className="sticky top-0 px-6 py-3  bg-gray-300"
+                          className="sticky top-0 px-5 py-2  bg-gray-300"
                         >
                           {column.Header}
                         </th>
@@ -133,16 +134,16 @@ const Dashboard = ({ activeTab, setIsBlurBackground, isBlurBackground }) => {
                       <th
                         key="Assign"
                         scope="col"
-                        className="sticky top-0 px-6 py-3  bg-gray-300"
+                        className="sticky top-0 px-5 py-2  bg-gray-300"
                       >
                         Agent List
                       </th>
                       <th
                         key="delete"
                         scope="col"
-                        className="sticky top-0 px-6 py-3  bg-gray-300"
+                        className="sticky top-0 px-5 py-2  bg-gray-300"
                       >
-                        Delete
+                        Delete Post
                       </th>
                     </tr>
                   </thead>
@@ -152,12 +153,12 @@ const Dashboard = ({ activeTab, setIsBlurBackground, isBlurBackground }) => {
                         {columns.map((column) => (
                           <td
                             key={column.Header}
-                            className="px-6 py-4 text-center"
+                            className="px-5 py-2 text-center"
                           >
                             {lead[column.accessor]}
                           </td>
                         ))}
-                        <td className="px-6 py-4 text-center" key="Assign">
+                        <td className="px-5 py-2 text-center" key="Assign">
                           <button
                             onClick={() => {
                               openModal(
@@ -165,17 +166,17 @@ const Dashboard = ({ activeTab, setIsBlurBackground, isBlurBackground }) => {
                                 lead.firstName + " " + lead.lastName
                               );
                             }}
-                            className="border border-blue-300 w-30 hover:shadow-md rounded-lg text-black focus:outline-none text-sm px-3.5 py-1.5 text-center"
+                            className=" w-30 hover:shadow-md rounded-lg text-blue-800 font-semibold focus:outline-none text-sm px-3.5 py-1.5 text-center"
                           >
                             Show AgentList
                           </button>
                         </td>
-                        <td className="px-6 py-4 text-center " key="delete">
+                        <td className="px-5 py-2 text-center " key="delete">
                           <button
                             onClick={() => handleDelete(lead.id)}
-                            className="border border-red-300 w-30 hover:shadow-md rounded-lg text-black focus:outline-none text-sm px-3.5 py-1.5 text-center"
+                            className="items-center justify-center hover:shadow-xl rounded-lg text-black focus:outline-none text-sm px-2 py-2"
                           >
-                            Delete
+                            <img className="w-6 h-6" src={bin} alt="logo" />
                           </button>
                         </td>
                       </tr>
@@ -197,7 +198,7 @@ const Dashboard = ({ activeTab, setIsBlurBackground, isBlurBackground }) => {
               {" "}
               <input
                 type="text"
-                className="transition-transform duration-500 transform hover:scale-105 w-5/6 m-4 h-12 rounded-lg outline-none px-3 shadow-lg"
+                className="transition-transform  border border-gray-200 duration-500 transform hover:scale-105 w-5/6 m-4 h-12 rounded-lg outline-none px-3 shadow-lg"
                 placeholder="Search..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -216,7 +217,7 @@ const Dashboard = ({ activeTab, setIsBlurBackground, isBlurBackground }) => {
                         <th
                           key={column.Header}
                           scope="col"
-                          className="sticky top-0 px-6 py-3  bg-gray-300"
+                          className="sticky top-0 px-5 py-2  bg-gray-300"
                         >
                           {column.Header}
                         </th>
@@ -225,9 +226,9 @@ const Dashboard = ({ activeTab, setIsBlurBackground, isBlurBackground }) => {
                       <th
                         key="delete"
                         scope="col"
-                        className="sticky top-0 px-6 py-3  bg-gray-300"
+                        className="sticky top-0 px-5 py-2  bg-gray-300"
                       >
-                        Delete
+                        Delete Post
                       </th>
                     </tr>
                   </thead>
@@ -237,18 +238,18 @@ const Dashboard = ({ activeTab, setIsBlurBackground, isBlurBackground }) => {
                         {columns.map((column) => (
                           <td
                             key={column.Header}
-                            className="px-6 py-4 text-center"
+                            className="px-5 py-2 text-center"
                           >
                             {lead[column.accessor]}
                           </td>
                         ))}
 
-                        <td className="px-6 py-4 text-center " key="delete">
+                        <td className="px-5 py-2 text-center" key="delete">
                           <button
                             onClick={() => handleDelete(lead.id)}
-                            className="border border-red-300 w-30 hover:shadow-md rounded-lg text-black focus:outline-none text-sm px-3.5 py-1.5 text-center"
+                            className="items-center justify-center hover:shadow-xl rounded-lg text-black focus:outline-none text-sm px-2 py-2"
                           >
-                            Delete
+                            <img className="w-6 h-6" src={bin} alt="logo" />
                           </button>
                         </td>
                       </tr>
@@ -270,7 +271,7 @@ const Dashboard = ({ activeTab, setIsBlurBackground, isBlurBackground }) => {
               {" "}
               <input
                 type="text"
-                className="transition-transform duration-500 transform hover:scale-105  w-5/6 m-4 h-12 rounded-lg outline-none px-3 shadow-lg"
+                className="transition-transform  border border-gray-200 duration-500 transform hover:scale-105  w-5/6 m-4 h-12 rounded-lg outline-none px-3 shadow-lg"
                 placeholder="Search..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
@@ -289,7 +290,7 @@ const Dashboard = ({ activeTab, setIsBlurBackground, isBlurBackground }) => {
                         <th
                           key={column.Header}
                           scope="col"
-                          className="sticky top-0 px-6 py-3  bg-gray-300"
+                          className="sticky top-0 px-5 py-2  bg-gray-300"
                         >
                           {column.Header}
                         </th>
@@ -298,9 +299,9 @@ const Dashboard = ({ activeTab, setIsBlurBackground, isBlurBackground }) => {
                       <th
                         key="delete"
                         scope="col"
-                        className="sticky top-0 px-6 py-3  bg-gray-300"
+                        className="sticky top-0 px-5 py-2  bg-gray-300"
                       >
-                        Delete
+                        Delete Post
                       </th>
                     </tr>
                   </thead>
@@ -310,18 +311,18 @@ const Dashboard = ({ activeTab, setIsBlurBackground, isBlurBackground }) => {
                         {columns.map((column) => (
                           <td
                             key={column.Header}
-                            className="px-6 py-4 text-center"
+                            className="px-5 py-2 text-center"
                           >
                             {lead[column.accessor]}
                           </td>
                         ))}
 
-                        <td className="px-6 py-4 text-center " key="delete">
+                        <td className="px-5 py-2 text-center " key="delete">
                           <button
                             onClick={() => handleDelete(lead.id)}
-                            className="border border-red-300 w-30 hover:shadow-md rounded-lg text-black focus:outline-none text-sm px-3.5 py-1.5 text-center"
+                            className="items-center justify-center hover:shadow-xl rounded-lg text-black focus:outline-none text-sm px-2 py-2"
                           >
-                            Delete
+                            <img className="w-6 h-6" src={bin} alt="logo" />
                           </button>
                         </td>
                       </tr>

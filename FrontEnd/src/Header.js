@@ -32,9 +32,9 @@ const Header = () => {
             </h2>
             <button
               onClick={handleLogout}
-              className="flex items-center text-white dark:text-white cursor-pointer transition-transform duration-500 transform hover:scale-110"
+              className="flex py-1 px-2 items-center  font-bold bg-white rounded-md text-black cursor-pointer transition-transform duration-500 transform hover:scale-110"
             >
-              <img className="w-8 h-8" src={logout} alt="logo" />
+              Logout <img className=" w-6 h-7" src={logout} alt="logo" />
             </button>
           </div>
         ) : (

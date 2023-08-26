@@ -23,7 +23,7 @@ const Admin = () => {
         <div className="flex flex-col h-screen">
           <Header />
           <div className="flex flex-grow overflow-hidden">
-            <div className="w-1/6 ">
+            <div className="w-1/5">
               <Sidebar
                 activeTab={activeTab}
                 handleTabClick={handleTabClick}
@@ -40,10 +40,7 @@ const Admin = () => {
           </div>
         </div>
       ) : (
-        <div>
-          <h1>hello</h1>
-          {navigate("/")}
-        </div>
+        <div>{navigate("/")}</div>
       )}
     </div>
   );

@@ -57,3 +57,24 @@
   max-height: 100%;
 }
 
+
+
+/* ***************************************SCROLLBAR*********************************************** */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #ffffff;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #6b7280;
+  border-radius: 8px;
+}
+
+.scrollbar-hori {
+  overflow-x: hidden;
+}
+
