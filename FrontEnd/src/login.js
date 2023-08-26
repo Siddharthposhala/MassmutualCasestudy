@@ -42,20 +42,15 @@ const Login = () => {
     })
       .then((response) => response.json())
       .then((data) => {
-        // Check if login is successful
         if (data.success) {
-          // Check if user is of admin role
           if (data.role === "Admin") {
-            // Redirect to the home page
             sessionStorage.setItem("username", username);
             setUser(loginData);
             navigate("/admin");
           } else {
-            // Display an error message for non-admin users
             alert("You must be an admin to login.");
           }
         } else {
-          // Display an error message for invalid credentials
           alert("Invalid username or password.");
         }
       })

@@ -1,11 +1,20 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import AgentModal from "./AgentModal";
 import bin from "./delete.png";
 
-const Dashboard = ({ activeTab, setIsBlurBackground, isBlurBackground }) => {
+const Dashboard = ({
+  activeTab,
+  setIsBlurBackground,
+  isBlurBackground,
+  newPosts,
+  setNewPosts,
+  assignedPosts,
+  setAssignedPosts,
+  setAdmin,
+}) => {
   const [leads, setLeads] = useState([]);
-  const [newPosts, setNewPosts] = useState([]);
-  const [assignedPosts, setAssignedPosts] = useState([]);
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [id, setId] = useState(0);
   const [leadname, setLeanname] = useState("");
@@ -13,7 +22,6 @@ const Dashboard = ({ activeTab, setIsBlurBackground, isBlurBackground }) => {
   const tableBodyHeight = "500px";
 
   useEffect(() => {
-    // Fetch leads data from the API
     fetch("http://localhost:8080/restapi/leads")
       .then((response) => response.json())
       .then((data) => {
@@ -114,7 +122,7 @@ const Dashboard = ({ activeTab, setIsBlurBackground, isBlurBackground }) => {
               <i className="fa fa-search absolute right-3 top-4 text-gray-300"></i>{" "}
             </div>
 
-            <div className="flex flex-col h-screen mt-2 m-6">
+            <div className="flex flex-col h-screen mt-2 m-6 p-4">
               <div
                 className="flex-grow overflow-auto rounded-lg outline-none shadow-xl"
                 style={{ maxHeight: tableBodyHeight }}
@@ -205,7 +213,7 @@ const Dashboard = ({ activeTab, setIsBlurBackground, isBlurBackground }) => {
               />{" "}
               <i className="fa fa-search absolute right-3 top-4 text-gray-300"></i>{" "}
             </div>
-            <div className="flex flex-col h-screen mt-2 m-6">
+            <div className="flex flex-col h-screen mt-2 m-6 p-4">
               <div
                 className="flex-grow overflow-auto outline-none shadow-xl rounded-lg"
                 style={{ maxHeight: tableBodyHeight }}
@@ -278,7 +286,7 @@ const Dashboard = ({ activeTab, setIsBlurBackground, isBlurBackground }) => {
               />{" "}
               <i className="fa fa-search absolute right-3 top-4 text-gray-300"></i>{" "}
             </div>
-            <div className="flex flex-col h-screen mt-2 m-6">
+            <div className="flex flex-col h-screen mt-2 m-6 p-4">
               <div
                 className="flex-grow overflow-auto outline-none shadow-xl rounded-lg "
                 style={{ maxHeight: tableBodyHeight }}
@@ -339,6 +347,7 @@ const Dashboard = ({ activeTab, setIsBlurBackground, isBlurBackground }) => {
         onClose={closeModal}
         id={id}
         leadname={leadname}
+        setAdmin={setAdmin}
       />
     </div>
   );

@@ -1,25 +1,32 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import "./App.css";
+import { useUser } from "./UserContext";
 
-const AgentModal = ({ isOpen, onClose, id, leadname }) => {
+const AgentModal = ({ isOpen, onClose, id, leadname,setAdmin }) => {
+  const user = useUser();
   const [agentslist, setLeads] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
+  const username = user.user.username;
 
   useEffect(() => {
-    // Fetch agents data from the API
-    fetch("http://localhost:8080/restapi/login")
-      .then((response) => response.json())
-      .then((data) => {
-        setLeads(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching agents:", error);
-      });
-  }, []);
+    if (username) {
+      fetch("http://localhost:8080/restapi/login")
+        .then((response) => response.json())
+        .then((data) => {
+          setLeads(data);
+          const loggedAdmin = data.find((admin) => admin.username === username);
+          setAdmin(loggedAdmin);
+        })
+        .catch((error) => {
+          console.error("Error fetching agents:", error);
+        });
+    }
+  }, [username]);
 
   const columns = [
     { Header: "UserName", accessor: "username" },
-    { Header: "Role", accessor: "role" },
+    { Header: "Email", accessor: "email" },
   ];
 
   const handleAssign = async (username, id) => {
@@ -45,6 +52,8 @@ const AgentModal = ({ isOpen, onClose, id, leadname }) => {
       console.error("Error assigning agent:", error);
     }
   };
+
+  
 
   const agents = agentslist.filter((agent) => agent.role === "Agent");
 
