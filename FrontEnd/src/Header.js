@@ -23,19 +23,19 @@ const Header = ({ ladmin }) => {
   return (
     <div className="sticky top-0 z-10 w-full">
       <div className="top-0 bg-blue-800 text-white p-4 flex justify-between items-center w-full">
-        <h2 className="ml-10 sm:text-xl lg:text-2xl flex-wrap font-semibold ">
-          LeadAdmin
-        </h2>
         <a
           href=" "
           className="ml-160 flex items-center text-2xl font-semibold text-gray-900 dark:text-white"
         >
           <img
-            className="w-44 h-10 transition-transform duration-500 transform hover:scale-110"
+            className="ml-12 w-44 h-10 transition-transform duration-500 transform hover:scale-110"
             src={mass}
             alt="logo"
           />
         </a>
+        <h2 className="ml-10 sm:text-xl lg:text-3xl flex-wrap font-semibold ">
+          LeadAdmin
+        </h2>
         {user ? (
           <div className="flex items-center">
             <div className="relative">
@@ -57,12 +57,14 @@ const Header = ({ ladmin }) => {
                 >
                   <div className="mb-2">
                     <h2 className="text-md font-semibold">
-                      Username: {ladmin.username}
+                      <span className="font-bold mr-2">Username:</span>
+                      <span>{ladmin.username}</span>
                     </h2>
                   </div>
                   <div className="mb-4">
                     <h2 className="text-md font-semibold">
-                      Email: {ladmin.email}
+                      <span className="font-bold mr-2">Email:</span>
+                      <span> {ladmin.email}</span>
                     </h2>
                   </div>
                   <button

@@ -3,26 +3,27 @@ import React, { useState, useEffect } from "react";
 import "./App.css";
 import { useUser } from "./UserContext";
 
-const AgentModal = ({ isOpen, onClose, id, leadname,setAdmin }) => {
+const AgentModal = ({ isOpen, onClose, id, leadname, setAdmin }) => {
   const user = useUser();
   const [agentslist, setLeads] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const username = user.user.username;
 
   useEffect(() => {
-    if (username) {
+    if (user) {
       fetch("http://localhost:8080/restapi/login")
         .then((response) => response.json())
         .then((data) => {
           setLeads(data);
-          const loggedAdmin = data.find((admin) => admin.username === username);
+          const loggedAdmin = data.find(
+            (admin) => admin.username === user.user.username
+          );
           setAdmin(loggedAdmin);
         })
         .catch((error) => {
           console.error("Error fetching agents:", error);
         });
     }
-  }, [username]);
+  }, [user]);
 
   const columns = [
     { Header: "UserName", accessor: "username" },
@@ -52,8 +53,6 @@ const AgentModal = ({ isOpen, onClose, id, leadname,setAdmin }) => {
       console.error("Error assigning agent:", error);
     }
   };
-
-  
 
   const agents = agentslist.filter((agent) => agent.role === "Agent");
 
@@ -88,13 +87,13 @@ const AgentModal = ({ isOpen, onClose, id, leadname,setAdmin }) => {
             <h1 className="sm:text-xl lg:text-3xl flex-wrap font-semibold mb-8">
               Agent List{" "}
             </h1>
-            <p className="font-semibold">Asign agent to : {leadname}</p>
+            <p className="font-semibold">Assign Agent to : {leadname}</p>
             <div className="mt-4 relative p-2 ">
               {" "}
               <input
                 type="text"
                 className=" border border-gray-200 rounded-lg w-5/6 h-12 rounded outline-none px-4 shadow-lg transition-transform duration-500 transform hover:scale-110"
-                placeholder="Search..."
+                placeholder="&#128269;  Search..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />{" "}

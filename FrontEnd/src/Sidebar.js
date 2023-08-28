@@ -34,8 +34,8 @@ const Sidebar = ({
                 } transition-transform duration-300 transform hover:scale-105 bg-opacity-50 rounded-xl  py-2 bg-blue-300  `}
                 onClick={() => !isBlurBackground && handleTabClick("newposts")}
               >
-                New Posts -
-                <div className="ml-1 mt-1 right-0 bg-white text-black rounded-full w-5 h-5 text-sm flex justify-center items-center">
+                New Posts
+                <div className="ml-2 mt-1 right-0 bg-white text-black rounded-full w-5 h-5 text-sm flex justify-center items-center">
                   {newPosts.length}
                 </div>
               </a>
@@ -53,8 +53,8 @@ const Sidebar = ({
                   !isBlurBackground && handleTabClick("Assignedposts")
                 }
               >
-                Assigned Posts -
-                <div className="ml-1 mt-1 right-0 bg-white text-black rounded-full w-5 h-5 text-sm flex justify-center items-center">
+                Assigned Posts
+                <div className="ml-2 mt-1 right-0 bg-white text-black rounded-full w-5 h-5 text-sm flex justify-center items-center">
                   {assignedPosts.length}
                 </div>
               </a>
@@ -70,8 +70,8 @@ const Sidebar = ({
                 } transition-transform duration-300 transform hover:scale-105 bg-opacity-50 rounded-xl  py-2 bg-blue-300 `}
                 onClick={() => !isBlurBackground && handleTabClick("status")}
               >
-                All Posts -
-                <div className="ml-1 mt-1 right-0 bg-white text-black rounded-full w-5 h-5 text-sm flex justify-center items-center">
+                All Posts
+                <div className="ml-2 mt-1 right-0 bg-white text-black rounded-full w-5 h-5 text-sm flex justify-center items-center">
                   {totallen}
                 </div>
               </a>

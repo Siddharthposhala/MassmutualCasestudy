@@ -60,6 +60,10 @@ const Login = () => {
       });
   };
 
+  const navigatepass = (e) => {
+    navigate("/forgotpassword");
+  };
+
   return (
     <div>
       <section className="h-full bg-neutral-200 dark:bg-neutral-700 lg:mt-20">
@@ -68,7 +72,7 @@ const Login = () => {
             <div className="w-4/6">
               <div className="block rounded-2xl bg-white shadow-2xl dark:bg-neutral-800">
                 <div className="g-0 lg:flex lg:flex-wrap">
-                  <div className="flex items-center justify-center lg:w-1/2 lg:rounded-l-2xl lg:rounded-bl-none bg-blue-800 shadow-2xl">
+                  <div className="flex items-center justify-center lg:w-1/2 lg:rounded-l-2xl lg:rounded bg-blue-800 shadow-2xl">
                     <div className="px-4 py-6 text-white md:mx- md:p-12 sm:mx-4 sm:p-6 ">
                       <a
                         href=" "
@@ -90,7 +94,7 @@ const Login = () => {
                     <div className="md:mx-6 md:p-12">
                       <div className="text-center">
                         <h4 className="mb-12 mt-1 pb-1 text-xl font-bold">
-                          Login into Admin Dashboard
+                          Admin Dashboard Login
                         </h4>
                       </div>
 
@@ -100,7 +104,7 @@ const Login = () => {
                             htmlFor="text"
                             className="text-left block mb-2 text-sm font-medium text-gray-900 dark:text-white"
                           >
-                            Your username
+                            Username
                           </label>
                           <input
                             type="text"
@@ -133,12 +137,12 @@ const Login = () => {
                         </div>
 
                         <div className="flex items-center justify-between">
-                          <a
-                            href=" "
+                          <button
+                            onClick={navigatepass}
                             className="mt-10 text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
                           >
                             Forgot password?
-                          </a>
+                          </button>
                         </div>
                         <button
                           type="submit"

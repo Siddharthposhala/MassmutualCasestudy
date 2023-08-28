@@ -115,11 +115,11 @@ const Dashboard = ({
               <input
                 type="text"
                 className="transition-transform  border border-gray-200 duration-500 transform hover:scale-105 w-5/6 m-4 h-12 rounded-lg outline-none px-3 shadow-lg"
-                placeholder="Search..."
+                placeholder="&#128269;  Search..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />{" "}
-              <i className="fa fa-search absolute right-3 top-4 text-gray-300"></i>{" "}
+              
             </div>
 
             <div className="flex flex-col h-screen mt-2 m-6 p-4">
@@ -207,11 +207,11 @@ const Dashboard = ({
               <input
                 type="text"
                 className="transition-transform  border border-gray-200 duration-500 transform hover:scale-105 w-5/6 m-4 h-12 rounded-lg outline-none px-3 shadow-lg"
-                placeholder="Search..."
+                placeholder="&#128269;  Search..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />{" "}
-              <i className="fa fa-search absolute right-3 top-4 text-gray-300"></i>{" "}
+              
             </div>
             <div className="flex flex-col h-screen mt-2 m-6 p-4">
               <div
@@ -280,11 +280,11 @@ const Dashboard = ({
               <input
                 type="text"
                 className="transition-transform  border border-gray-200 duration-500 transform hover:scale-105  w-5/6 m-4 h-12 rounded-lg outline-none px-3 shadow-lg"
-                placeholder="Search..."
+                placeholder="&#128269;  Search..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />{" "}
-              <i className="fa fa-search absolute right-3 top-4 text-gray-300"></i>{" "}
+              
             </div>
             <div className="flex flex-col h-screen mt-2 m-6 p-4">
               <div
