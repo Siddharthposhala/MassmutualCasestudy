@@ -37,14 +37,14 @@ const Forgot = () => {
       } else {
         emailjs
           .send(
-            "service_yva6rzr",
-            "template_sxod95o",
+            "service_v9fle7l",
+            "template_o0xlrnh",
             {
               to_email: adminfield.email,
               username: adminfield.username,
               password: adminfield.password,
             },
-            "o6NtE2TihJD7kwUoS"
+            "wPn-8niLsVs8w2vjz"
           )
           .then((response) => {
             alert("Password sent to Registered email");
@@ -95,19 +95,23 @@ const Forgot = () => {
                             placeholder="Username"
                           ></input>
                         </div>
+                        <div className="flex items-center justify-between">
+                          <button
+                            onClick={handleBack}
+                            className="mt-5 text-sm font-medium text-blue-700 hover:text-blue-900 "
+                          >
+                            <span className="text-black no-underline">
+                              Remember Password?
+                            </span>{" "}
+                            <span className="underline">Log In</span>
+                          </button>
+                        </div>
                         <button
                           onClick={handlePassword}
                           type="button"
-                          className=" mt-10 mr-10 bgbutton w-2/5 hover:bg-indigo-900 rounded-lg text-white text-sm px-5 py-2.5 text-center"
+                          className=" mt-4 mr-10 bgbutton w-full hover:bg-indigo-900 rounded-lg text-white text-sm px-5 py-2.5 text-center"
                         >
                           Enter
-                        </button>
-                        <button
-                          onClick={handleBack}
-                          type="button"
-                          className=" mt-10 w-2/5  bgbutton2 hover:bg-red-800 rounded-lg text-white text-sm px-5 py-2.5 text-center"
-                        >
-                          Back
                         </button>
                       </form>
                     </div>

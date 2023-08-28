@@ -9,5 +9,4 @@ public class LeadAdminBackApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(LeadAdminBackApplication.class, args);
 	}
-
 }

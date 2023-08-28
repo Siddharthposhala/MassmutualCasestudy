@@ -50,6 +50,10 @@ public class LoginController {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(response);
         }
     }
+    @PostMapping({"/signup"})
+    public User signupForm(@RequestBody User user) {
+        return userRepository.save(user);
+    }
     @GetMapping("/login")
     public ResponseEntity<List<User>> getUsers(){
         return new ResponseEntity<>(userRepository.findAll(),HttpStatus.OK);

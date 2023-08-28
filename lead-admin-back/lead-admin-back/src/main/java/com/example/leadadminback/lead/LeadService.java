@@ -3,6 +3,7 @@ package com.example.leadadminback.lead;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -24,6 +25,7 @@ public class LeadService {
     }
 
     public Lead insertLead(Lead lead) {
+        lead.setInsertionTime(LocalDateTime.now());
         this.leadRepository.save(lead);
         return lead;
     }
@@ -36,7 +38,7 @@ public class LeadService {
         Optional<Lead> leadOptional = leadRepository.findById(assignRequest.getId());
         if (leadOptional.isPresent()) {
             Lead lead = leadOptional.get();
-            lead.setStatus("Pending"); // Update the status
+            lead.setStatus("Completed"); // Update the status
             lead.setAssignedTo(assignRequest.getUsername());
             leadRepository.save(lead);
         }

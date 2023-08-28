@@ -3,8 +3,11 @@ package com.example.leadadminback.lead;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import java.time.LocalDateTime;
 
 
 @AllArgsConstructor
@@ -12,6 +15,17 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Data
 @Document(collection = "lead")
 public class Lead {
+
+    public LocalDateTime getInsertionTime() {
+        return insertionTime;
+    }
+
+    public void setInsertionTime(LocalDateTime insertionTime) {
+        this.insertionTime = insertionTime;
+    }
+
+    @CreatedDate
+    private LocalDateTime insertionTime;
     public String getId() {
         return id;
     }

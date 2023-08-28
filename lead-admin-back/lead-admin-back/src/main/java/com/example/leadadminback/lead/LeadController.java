@@ -17,7 +17,7 @@ public class LeadController {
     }
 
     @GetMapping
-    public List<Lead> getAllStudents() {
+    public List<Lead> getAllLeads() {
         return this.leadService.getAllLeads();
     }
 

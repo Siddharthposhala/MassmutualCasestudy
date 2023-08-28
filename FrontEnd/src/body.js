@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import AgentModal from "./AgentModal";
 import bin from "./delete.png";
+import { format } from "date-fns";
 
 const Dashboard = ({
   activeTab,
@@ -14,7 +15,6 @@ const Dashboard = ({
   setAdmin,
 }) => {
   const [leads, setLeads] = useState([]);
-
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [id, setId] = useState(0);
   const [leadname, setLeanname] = useState("");
@@ -25,10 +25,20 @@ const Dashboard = ({
     fetch("http://localhost:8080/restapi/leads")
       .then((response) => response.json())
       .then((data) => {
-        setLeads(data);
-        const newPosts = data.filter((lead) => lead.status === "New");
-        const assignedPosts = data.filter((lead) => lead.status === "Pending");
-
+        // Convert the insertionTime format
+        const formattedLeads = data.map((lead) => ({
+          ...lead,
+          insertionTime: format(
+            new Date(lead.insertionTime),
+            "do MMMM, yyyy HH:mm"
+          ),
+        }));
+        console.log(formattedLeads);
+        const newPosts = formattedLeads.filter((lead) => lead.status === "New");
+        const assignedPosts = formattedLeads.filter(
+          (lead) => lead.status === "Pending"
+        );
+        setLeads(formattedLeads);
         setNewPosts(newPosts);
         setAssignedPosts(assignedPosts);
       })
@@ -98,6 +108,10 @@ const Dashboard = ({
     { Header: "Email", accessor: "email" },
     { Header: "Phone", accessor: "phone" },
     { Header: "Status", accessor: "status" },
+    {
+      Header: "Posted At",
+      accessor: "insertionTime",
+    },
     { Header: "Assigned To", accessor: "assignedTo" },
   ];
 
@@ -119,7 +133,6 @@ const Dashboard = ({
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />{" "}
-              
             </div>
 
             <div className="flex flex-col h-screen mt-2 m-6 p-4">
@@ -211,7 +224,6 @@ const Dashboard = ({
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />{" "}
-              
             </div>
             <div className="flex flex-col h-screen mt-2 m-6 p-4">
               <div
@@ -284,7 +296,6 @@ const Dashboard = ({
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />{" "}
-              
             </div>
             <div className="flex flex-col h-screen mt-2 m-6 p-4">
               <div

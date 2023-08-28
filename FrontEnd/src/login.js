@@ -63,6 +63,9 @@ const Login = () => {
   const navigatepass = (e) => {
     navigate("/forgotpassword");
   };
+  const navigatesignup = (e) => {
+    navigate("/signup");
+  };
 
   return (
     <div>
@@ -90,7 +93,7 @@ const Login = () => {
                     </div>
                   </div>
 
-                  <div className="px-4 md:px-0 lg:w-3/6">
+                  <div className="px-2 md:px-0 lg:w-3/6">
                     <div className="md:mx-6 md:p-12">
                       <div className="text-center">
                         <h4 className="mb-12 mt-1 pb-1 text-xl font-bold">
@@ -138,15 +141,24 @@ const Login = () => {
 
                         <div className="flex items-center justify-between">
                           <button
+                            onClick={navigatesignup}
+                            className="mt-5 text-sm font-medium  text-blue-700 hover:text-blue-900 "
+                          >
+                            <span className="text-black no-underline">
+                              Don’t have an account?
+                            </span>{" "}
+                            <span className="underline">Sign Up</span>
+                          </button>
+                          <button
                             onClick={navigatepass}
-                            className="mt-10 text-sm font-medium text-primary-600 hover:underline dark:text-primary-500"
+                            className="mt-5 text-sm font-medium text-blue-700 hover:text-blue-900 underline"
                           >
                             Forgot password?
                           </button>
                         </div>
                         <button
                           type="submit"
-                          className=" mt-10 bgbutton w-full hover:bg-indigo-900 rounded-lg text-white text-sm px-5 py-2.5 text-center"
+                          className=" mt-6 bgbutton w-full hover:bg-indigo-900 rounded-lg text-white text-sm px-5 py-2.5 text-center"
                         >
                           Login
                         </button>

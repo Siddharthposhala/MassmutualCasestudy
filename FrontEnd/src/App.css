@@ -44,7 +44,9 @@
   background-color: #ef4444;
 }
 
-
+.no-underline {
+  text-decoration: none;
+}
 
 /* Replace ".logo-container" and ".logo-image" with appropriate selectors if needed */
 .logo-container {
