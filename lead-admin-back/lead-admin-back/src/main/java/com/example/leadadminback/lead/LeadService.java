@@ -38,8 +38,10 @@ public class LeadService {
         Optional<Lead> leadOptional = leadRepository.findById(assignRequest.getId());
         if (leadOptional.isPresent()) {
             Lead lead = leadOptional.get();
-            lead.setStatus("Completed"); // Update the status
-            lead.setAssignedTo(assignRequest.getUsername());
+            String prev= lead.getAssignedTo();
+            String curr = assignRequest.getUsername();
+            lead.setStatus("Pending"); // Update the status
+            lead.setAssignedTo(prev+"\n"+curr);
             leadRepository.save(lead);
         }
     }

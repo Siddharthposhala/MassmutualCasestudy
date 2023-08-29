@@ -26,6 +26,23 @@ public class Lead {
 
     @CreatedDate
     private LocalDateTime insertionTime;
+
+    private LocalDateTime assignedTime;
+
+    public LocalDateTime getAssignedTime() {
+        return assignedTime;
+    }
+
+    public void setAssignedTime(LocalDateTime assignedTime) {
+        this.assignedTime = assignedTime;
+    }
+
+    public void setStatus(String status) {
+        if ("Pending".equals(status) && !"Pending".equals(this.status)) {
+            this.assignedTime = LocalDateTime.now();
+        }
+        this.status = status;
+    }
     public String getId() {
         return id;
     }
@@ -70,13 +87,13 @@ public class Lead {
         return status;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
+
 
     public String getAssignedTo() {
         return assignedTo;
     }
+
+
 
     public void setAssignedTo(String assignedTo) {
         this.assignedTo = assignedTo;
@@ -90,6 +107,7 @@ public class Lead {
     private String phone;
     private String status;
     private String assignedTo;
+    
 
 
 }
