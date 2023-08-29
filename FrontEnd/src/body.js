@@ -74,6 +74,8 @@ const Dashboard = ({
   };
 
   const handleDelete = async (id) => {
+    const confirmDelete = window.confirm("Are you sure you want to delete this lead?");
+     if (confirmDelete) {
     try {
       const response = await fetch(
         `http://localhost:8080/restapi/leads/${id}`,
@@ -99,6 +101,7 @@ const Dashboard = ({
     } catch (error) {
       console.error("Error deleting lead:", error);
     }
+  }
   };
 
   const columns = [
